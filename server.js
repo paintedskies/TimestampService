@@ -21,13 +21,16 @@ app.get("/", function (req, res) {
 
 // your first API endpoint... 
 app.get("/api/timestamp/:date_stamp", function (req, res) {
-  console.log(req.params.date_stamp);
   var date_stamp = req.params.date_stamp;
+  console.log(Date.parse(1450137600000));
   if(date_stamp === ''){
     var present_time = Date.now();
     res.json({unix:present_time.getTime(), utc:present_time.toUTCString()});  
   }
-  else if(parseInt())
+  if(Number.isInteger(parseInt(date_stamp))){
+    var date = new Date(parseInt(date_stamp));
+     res.json({unix:date.getTime(), utc:date.toUTCString()});  
+  }
   else if(!isNaN(Date.parse(date_stamp))){
     var date = new Date(date_stamp);
     res.json({unix:date.getTime(), utc:date.toUTCString()});    
